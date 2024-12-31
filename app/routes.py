@@ -38,5 +38,14 @@ def delete_task(pk):
 
 @app.put("/tasks/<int:pk>/")
 def update_task(pk):
-    task.update_by_id(pk)
+    task_data = request.json
+    task.update_by_id(task_data, pk)
     return "", 204
+
+@app.route('/')
+@app.route('/index')
+def index():
+
+    my_dictionary = {"a": "b", "c":"d"}
+
+    return my_dictionary.get("e", "z")
